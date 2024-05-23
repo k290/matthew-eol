@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900&display=swap"
+      rel="stylesheet"
+    />  <link
+      href="https://fonts.googleapis.com/css?family=Cutive+Mono:400,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      p {
+        color: #fff;
+        font-size: 45px;
+        text-align: center;
+        margin: 0;
+      }
+
+      .text {
+        font-size: 30px;
+      }
+
+      .sub {
+        font-size: 20px;
+        font-style: italic;
+        margin: 1rem;
+      }
+
+      .counter {
+         font-family: 'Cutive Mono'; 
+      }
+
+      .woop {
+        font-family: sans-serif;
+        letter-spacing: 5px;
+        font-size: 60px;
+      }
+
+      div {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+          ),
+          url('https://cdn.wallpapersafari.com/86/26/md46BT.jpg');
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Playfair Display', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p class="counter" id="demo"></p>
+      <p class="text sub">- until -</p>
+      <p class="text">IE11</p>
+      <p class="text">End Of Support</p>
+      <p class="text woop">🙌</p>
+    </div>
+
+    <script>
+	
+		Number.prototype.padLeft = function (n,str){
+			return Array(n-String(this).length+1).join(str||'0')+this;
+		}
+      // Set the date we're counting down to
+      const countDownDate = new Date('Dec 31, 2024 23:59:59').getTime();
+	  
+	  const updateTime = () => {
+	          // Get today's date and time
+        const now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        const distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById('demo').innerHTML =
+          days + 'd ' + hours.padLeft(2) + 'h ' + minutes.padLeft(2) + 'm ' + seconds.padLeft(2) + 's ';
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById('demo').innerHTML = 'YASSSSS';
+        }
+	  };
+	  updateTime();
+      // Update the count down every 1 second
+      const x = setInterval(function() {
+			updateTime();
+      }, 1000);
+	  
+	  
+    </script>
+  </body>
+</html>
