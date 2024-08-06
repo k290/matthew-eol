@@ -75,13 +75,9 @@
 
     <script>
 	
-		Number.prototype.padLeft = function (n,str){
-			return Array(n-String(this).length+1).join(str||'0')+this;
-		}
-      // Set the date we're counting down to
-      const countDownDate = new Date('Dec 31, 2024 23:59:59').getTime();
+      	const countDownDate = new Date('Dec 31, 2024 23:59:59').getTime();
 	  
-	  const updateTime = () => {
+	const updateTime = () => {
 	          // Get today's date and time
         const now = new Date().getTime();
 
@@ -98,7 +94,7 @@
 
         // Output the result in an element with id="demo"
         document.getElementById('demo').innerHTML =
-          days + 'd ' + hours.padLeft(2) + 'h ' + minutes.padLeft(2) + 'm ' + seconds.padLeft(2) + 's ';
+          days + 'd ' + hours.toString().padStart(2, "0") + 'h ' + minutes.toString().padStart(2, "0") + 'm ' + seconds.toString().padStart(2, "0") + 's ';
 
         // If the count down is over, write some text
         if (distance < 0) {
