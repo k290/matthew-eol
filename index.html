@@ -78,6 +78,7 @@
       	const countDownDate = new Date('Dec 31, 2024 23:59:59').getTime();
 	  
 	const updateTime = () => {
+		const now = new Date().getTime();
 		const distance = countDownDate - now;
 
 		let days, hours, minutes, seconds;
