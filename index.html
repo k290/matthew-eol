@@ -78,34 +78,37 @@
       	const countDownDate = new Date('Dec 31, 2024 23:59:59').getTime();
 	  
 	const updateTime = () => {
-	          // Get today's date and time
-        const now = new Date().getTime();
+		const distance = countDownDate - now;
 
-        // Find the distance between now and the count down date
-        const distance = countDownDate - now;
+		let days, hours, minutes, seconds;
 
-        // Time calculations for days, hours, minutes and seconds
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		if (distance <= 0) {
+  			days = 0;
+  			hours = 0;
+  			minutes = 0;
+  			seconds = 0;
+		} else {
+  			days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  			hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  			minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  			seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		}
 
-        // Output the result in an element with id="demo"
-        document.getElementById('demo').innerHTML =
-          days + 'd ' + hours.toString().padStart(2, "0") + 'h ' + minutes.toString().padStart(2, "0") + 'm ' + seconds.toString().padStart(2, "0") + 's ';
+		hours = hours.toString().padStart(2, "0");
+		minutes = minutes.toString().padStart(2, "0");
+		seconds = seconds.toString().padStart(2, "0");
 
-        // If the count down is over, write some text
-        if (distance < 0) {
-          clearInterval(x);
-        }
+		const demoElement = document.getElementById('demo');
+  		demoElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+	        if (distance < 0) {
+        	  clearInterval(x);
+        	}
 	  };
-	  updateTime();
-      // Update the count down every 1 second
-      const x = setInterval(function() {
-			updateTime();
-      }, 1000);
+	    
+      updateTime();
+
+      setInterval(()=> updateTime();, 1000);
 	  
 	  
     </script>
