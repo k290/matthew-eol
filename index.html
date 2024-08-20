@@ -81,28 +81,21 @@
 		const now = new Date().getTime();
 		const distance = countDownDate - now;
 
-		let days, hours, minutes, seconds;
 
-		if (distance <= 0) {
-  			days = 0;
-  			hours = 0;
-  			minutes = 0;
-  			seconds = 0;
-		} else {
-  			days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  			hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  			minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  			seconds = Math.floor((distance % (1000 * 60)) / 1000);
-		}
+  		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-		hours = hours.toString().padStart(2, "0");
-		minutes = minutes.toString().padStart(2, "0");
-		seconds = seconds.toString().padStart(2, "0");
+		const hoursDisplay = hours.toString().padStart(2, "0");
+		const minutesDisplay = minutes.toString().padStart(2, "0");
+		const secondsDisplay = seconds.toString().padStart(2, "0");
 
 		const demoElement = document.getElementById('demo');
-  		demoElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  		demoElement.innerHTML = `${days}d ${hoursDisplay}h ${minutesDisplay}m ${secondsDisplay}s`;
 
-	        if (distance < 0) {
+	        if (distance <= 0) {
+		  demoElement.innerHTML = "YASSSSS";
         	  clearInterval(x);
         	}
 	  }
