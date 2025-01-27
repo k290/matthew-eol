@@ -75,7 +75,7 @@
 
     <script>
 	
-      	const countDownDate = new Date('Jan 27, 2025 00:00:00').getTime();
+      	const countDownDate = new Date('Mar 4, 2025 00:00:00').getTime();
 	  
 	const updateTime = () => {
 		const now = new Date().getTime();
@@ -95,14 +95,14 @@
   		demoElement.innerHTML = `${days}d ${hoursDisplay}h ${minutesDisplay}m ${secondsDisplay}s`;
 
 	        if (distance <= 0) {
+		  clearInterval(x);
 		  demoElement.innerHTML = "YASSSSS";
-        	  clearInterval(x);
         	}
 	  }
 	    
       updateTime();
 
-      setInterval(()=> updateTime(), 1000);
+      setInterval(() => updateTime(), 1000);
 	  
 	  
     </script>
